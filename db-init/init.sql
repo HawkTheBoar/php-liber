@@ -7,6 +7,13 @@ CREATE TABLE IF NOT EXISTS users (
     role ENUM('admin', 'user') DEFAULT 'user',
     PRIMARY KEY (id)
 );
+CREATE TABLE IF NOT EXISTS category (
+    id INT AUTO_INCREMENT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    PRIMARY KEY (id)
+);
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT,
     category_id INT NOT NULL,
@@ -16,11 +23,4 @@ CREATE TABLE IF NOT EXISTS products (
     price DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (category_id) REFERENCES category(id)
-);
-CREATE TABLE IF NOT EXISTS category (
-    id INT AUTO_INCREMENT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    name VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    PRIMARY KEY (id)
 );
