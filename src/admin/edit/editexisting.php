@@ -13,10 +13,15 @@ var_dump($names);
 // Validate table name and column names to prevent SQL injection
 $table = preg_replace('/[^a-zA-Z0-9_]/', '', $table); // Allow only alphanumeric and underscores
 $names = array_map(fn($name) => preg_replace('/[^a-zA-Z0-9_]/', '', $name), $names);
-
+$set = "";
 // Dynamically construct the query
-
-$query = "UPDATE `$table` SET  WHERE id = :id";
+for($i = 0; $i < count($names); $i++){
+    $set += "$names[$i] = ?, ";
+}
+echo $set;
+$set = substr($set, strlen($names[$i])-3);
+echo $set;
+$query = "UPDATE `$table` SET $set WHERE id = :id";
 
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id', $id);

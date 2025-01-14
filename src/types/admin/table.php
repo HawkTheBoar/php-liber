@@ -16,13 +16,12 @@ class Table{
         $columns = [];
         for($i = 0; $i < count($queryRes); $i++){
             $column = new Column($queryRes[$i]['Field'], $queryRes[$i]['Type'], $queryRes[$i]['Null'] === 'YES');
-            if(!$sanitize){}
+            if(!$sanitize){ }
             else if(in_array($column->getName(), $ignore)){
                continue; 
             }
-            else if(str_contains($column->getName(), 'id')){
+            if($column->getName() === 'id')
                 continue;
-            }
             // skip password anyway
             if(str_contains($column->getName(),'password')){
                 continue;
