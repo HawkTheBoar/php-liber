@@ -1,0 +1,69 @@
+{
+    "category": {
+        "name": "category",
+        "fields": [
+            {
+                "name": "name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "required": true
+            }
+        ]
+    },
+    "products":{
+        "name": "products",
+        "fields": [
+            {
+                "name": "name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "description",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "price",
+                "type": "number",
+                "required": true
+            },
+            {
+                "name": "category_id",
+                "type": "relation",
+                "required": true,
+                "relation": "category"
+            }
+        ]
+    },
+    "users": {
+        "name": "users",
+        "fields": [
+            {
+                "name": "name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "email",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "password",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "role",
+                "type": "enum",
+                "required": true,
+                "values": ["admin", "user"]
+            }
+        ]
+    }
+}

@@ -31,20 +31,10 @@
             ?>
 
             <div>
-                <form action="/admin/add/addnew.php" method="POST">
+                <div>
                     <h1><?php echo $table->getName() ?></h1>
-                    
-                    <input type="hidden" style="display: none" name="table" value="<?php echo $table->getName() ?>">
-                    <?php
-                        foreach($table->getColumns() as $column){
-                    ?>
-                    <input type="hidden" name="names[]" value="<?php echo $column->getName() ?>">
-                    <input type="text" name="values[]" placeholder="<?php echo $column->getName() ?>">
-                    <?php
-                        }
-                    ?>
-                    <button type="submit">Přidat</button>
-                </form>
+                    <a href="/admin/add/<?php echo $table->getName() ?>.php">Přidat</a>
+                </div>
                 <table>
                     <?php
                         foreach($table->getColumns() as $column){
@@ -63,18 +53,25 @@
                     <tr>
                         <?php
                             foreach($table->getColumns() as $column){
-                                
                         ?>
                         <td><?php echo $row[$column->getName()] ?></td>
                         <?php
                             }
                         ?>
+                        <td>
+                            <a href="/admin/edit/<?php echo $table->getName() ?>.php?id=<?php echo $row['id'] ?>">
+                            Edit
+                            </a>
+                            <a href="/admin/delete/<?php echo $table->getName() ?>.php?id=<?php echo $row['id'] ?>">
+                                Delete
+                            </a>
+                        </td>
                     </tr>
                     <?php
                         }
                     ?>
                 </table>
-            </div>
+            </Di>
             <?php
                 }
             ?>

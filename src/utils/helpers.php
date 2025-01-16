@@ -5,3 +5,8 @@ function getFromPostOrThrowError(string $name){
     $postval = $_POST[$name];
     return $postval;
 }
+function loadJson(string $path){
+    $config = file_get_contents($path);
+    $config = json_decode($config, true);
+    return $config;
+}
