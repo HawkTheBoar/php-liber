@@ -1,7 +1,17 @@
 <?php
+/**
+ * @param string $why - The reason why the authentication failed
+ * Redirects to the login page with the error message
+ */
 function auth_failed($why){
+    $routes = loadJson($_SERVER['DOCUMENT_ROOT'] . "/routes.json");
     str_replace(" ", "+", $why);
-    header("Location: /admin/login.php?error=$why");
+    header("Location: " . $routes['auth']['login'] ."?error=$why");
+    exit();
+}
+function redirectWithMessage(string $path, string $message){
+    $path = $path . "?message=" . str_replace(" ", "+", $message);
+    header("Location: $path");
     exit();
 }
 function getFromPostOrThrowError(string $name){

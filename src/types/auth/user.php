@@ -33,10 +33,16 @@ class User{
     static function Logout(){
         unset($_SESSION['user']);
     }
-    
+    /**
+     * Sets the user to the session
+     */
     function Login(){
         $_SESSION['user'] = $this;
     }
+    /**
+     * Authenticates the user
+     * @return bool TRUE if the user password is correct, FALSE otherwise
+     */
     function Authenticate(string $password): bool{
         if(self::$pdo === null){
             self::$pdo = pdoconnect::getInstance();

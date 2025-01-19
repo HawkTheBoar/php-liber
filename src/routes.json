@@ -1,0 +1,17 @@
+{
+    "admin":{
+        "index": "/admin",
+        "add": "/admin/add"
+    },
+    "auth": {
+        "login": "/auth/login.php",
+        "register": "/auth/register.php",
+        "logout": "/auth/logout.php",
+        "forgotPassword": "/auth/forgot-password.php"
+
+    },
+    "public":{
+        "index": "/"
+    }
+
+}

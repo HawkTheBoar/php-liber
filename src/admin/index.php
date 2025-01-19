@@ -4,7 +4,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/types/admin/table.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/types/admin/column.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/components/navbar.php";
-
+    
     try {
         $pdo = pdoconnect::getInstance();
         
