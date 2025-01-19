@@ -1,17 +1,17 @@
 <?php
 class Table{
-    private $pdo;
+    private static $pdo;
     private $tableName;
     private $columns;
     public function __construct($tableName){
-        $this->pdo = pdoconnect::getInstance();
+        self::$pdo = pdoconnect::getInstance();
         $this->tableName = $tableName;
         $this->columns = $this->fetchColumns();
     }
     private function fetchColumns($sanitize = true){
         $ignore = ['created_at', 'updated_at'];
         $sql = "SHOW COLUMNS FROM $this->tableName";
-        $res = $this->pdo->query($sql);
+        $res = self::$pdo->query($sql);
         $queryRes = $res->fetchAll();
         $columns = [];
         for($i = 0; $i < count($queryRes); $i++){
